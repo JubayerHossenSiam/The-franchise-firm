@@ -1,0 +1,49 @@
+<script defer>
+  // The JavaScript code is embedded in an HTML widget on both the Home and Insights pages
+  const blogPostBtn = document.querySelectorAll(
+    ".blog-post-btn .elementor-widget-container .elementor-button-wrapper .elementor-button"
+  );
+  let playIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 28">
+      <g id="Group_1961" data-name="Group 1961" transform="translate(-748 -941)">
+        <g id="Ellipse_96" data-name="Ellipse 96" transform="translate(748 941)" fill="#fff" stroke="#5cb9be" stroke-width="2">
+          <circle cx="14" cy="14" r="14" stroke="none"/>
+          <circle cx="14" cy="14" r="13" fill="none"/>
+        </g>
+        <g id="Polygon_1" data-name="Polygon 1" transform="translate(769.5 948.5) rotate(90)" fill="#fff">
+          <path d="M 11.32105827331543 11 L 1.678941607475281 11 L 6.5 2.099584579467773 L 11.32105827331543 11 Z" stroke="none"/>
+          <path d="M 6.5 4.199179172515869 L 3.357889175415039 10 L 9.642110824584961 10 L 6.5 4.199179172515869 M 6.5 0 L 13 12 L 0 12 L 6.5 0 Z" stroke="none" fill="#5cb9be"/>
+        </g>
+      </g>
+    </svg>
+  `;
+  async function fetchData() {
+    try {
+      const response = await fetch("/wp-json/wp/v2/posts");
+      if (!response.ok) {
+        console.log("Network response was not ok");
+      }
+      const data = await response.json();
+      data.forEach((post, index) => {
+        const categoriesArray = post.categories;
+
+        if (Array.isArray(categoriesArray) && categoriesArray.length > 0) {
+          const firstCategoryValue = categoriesArray[0];
+          if (index < blogPostBtn.length) {
+            const btn = blogPostBtn[index];
+
+            if (firstCategoryValue == 36) {
+              btn.innerHTML = `${playIcon} Listen`;
+            }
+            if (firstCategoryValue == 35) {
+              btn.innerHTML = "Read More";
+            }
+          }
+        }
+      });
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
+  }
+  fetchData();
+</script>

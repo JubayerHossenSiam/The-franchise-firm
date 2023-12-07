@@ -1,0 +1,134 @@
+<style>
+  /* The CSS is stored in the Elementor global custom CSS section. */
+  .hide {
+    display: none;
+  }
+  .content {
+    position: relative;
+  }
+  .content.active::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to top,
+      rgba(247, 247, 247, 1) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    pointer-events: none;
+  }
+  .read-more {
+    all: unset;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    padding-block: 15px;
+    text-align: center;
+    color: #5cb9be;
+    position: relative;
+  }
+  .read-more:hover {
+    background-color: transparent;
+    color: #5cb9be;
+    border: none;
+    outline: none;
+  }
+  .read-more:focus {
+    background-color: transparent;
+    color: #5cb9be;
+    border: none;
+    outline: none;
+  }
+  .read-more.active svg {
+    transform: rotate(180deg);
+  }
+</style>
+<script>
+  // The JavaScript code is stored in the Elementor Custom Code section. The file name is 'Attorneys Read More'
+  let paragraph = document.querySelector(".content");
+  let fullHeight = paragraph.clientHeight;
+  let defaultHeight;
+  let arrow = `
+   <svg xmlns="http://www.w3.org/2000/svg" width="12.446" height="6.73" viewBox="0 0 12.446 6.73">
+     <path id="Path_250" data-name="Path 250" d="M825.08,73l5.669,5.669L836.831,73" transform="translate(-824.726 -72.634)" fill="none" stroke="#5cb9be" stroke-width="1"/>
+   </svg>
+   `;
+  document.addEventListener("DOMContentLoaded", function () {
+    let currentlyOpenContent = null;
+    let currentlyOpenButton = null;
+
+    const readMoreBtns = document.querySelectorAll(".read-more");
+
+    function closeContent(content, button) {
+      if (content) {
+        content.classList.remove("open");
+        content.querySelector(".dots").classList.remove("hide");
+        content.querySelector(".more").classList.add("hide");
+        let paragraph = document.querySelector(".content");
+        paragraph.style.height = `${defaultHeight}px`;
+      }
+      if (button) {
+        button.classList.remove("active");
+        button.innerHTML = `Read More ${arrow}`;
+        content.classList.add("active");
+      }
+    }
+    function openContent(content, button) {
+      if (content) {
+        content.classList.add("open");
+        content.querySelector(".dots").classList.add("hide");
+        content.querySelector(".more").classList.remove("hide");
+        paragraph.style.height = `${fullHeight}px`;
+      }
+
+      if (button) {
+        button.classList.add("active");
+        button.innerHTML = `Read Less ${arrow}`;
+        content.classList.remove("active");
+      }
+    }
+
+    function readMore(content, button) {
+      if (currentlyOpenContent && currentlyOpenButton) {
+        closeContent(currentlyOpenContent, currentlyOpenButton);
+        currentlyOpenButton = null;
+      }
+      if (content !== currentlyOpenContent) {
+        openContent(content, button);
+        currentlyOpenContent = content;
+        currentlyOpenButton = button;
+      } else {
+        currentlyOpenContent = null;
+      }
+    }
+
+    readMoreBtns.forEach((btn) => {
+      btn.addEventListener("click", function (event) {
+        const content = event.target.previousElementSibling;
+        readMore(content, event.target);
+      });
+    });
+
+    let noOfCharac = 1500;
+    let contents = document.querySelectorAll(".content");
+
+    contents.forEach((content) => {
+      if (content.innerHTML.length > noOfCharac) {
+        let displayText = content.innerHTML.slice(0, noOfCharac);
+        let moreText = content.innerHTML.slice(noOfCharac);
+        content.innerHTML = `${displayText}<span class="dots">...</span><span class="more hide">${moreText}</span>`;
+        content.nextElementSibling.style.display = "inline-block";
+      } else {
+        content.nextElementSibling.style.display = "none";
+      }
+    });
+    let paragraph = document.querySelector(".content");
+    defaultHeight = paragraph.clientHeight;
+    paragraph.style.height = `${defaultHeight}px`;
+  });
+</script>

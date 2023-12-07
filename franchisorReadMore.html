@@ -1,0 +1,55 @@
+<!-- The CSS and JavaScript code are embedded within an HTML widget on the
+Franchisor Services Page -->
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+<script defer>
+  let deviceWidth =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+  if (deviceWidth > 767) {
+    let serviceCardElements = document.querySelectorAll(".service-card");
+    let allTabTitleElements = [];
+    let allReadMoreBtns = [];
+    serviceCardElements.forEach(function (serviceCardElement) {
+      // console.log(serviceCardElement);
+      let tabTitleElement = serviceCardElement.closest(".e-n-tab-title");
+      let readMoreBtn = serviceCardElement.querySelector(".tab-button");
+      allTabTitleElements.push(tabTitleElement);
+      allReadMoreBtns.push(readMoreBtn);
+    });
+    allTabTitleElements.forEach(function (tabTitleElement) {
+      tabTitleElement.addEventListener("click", () => {
+        let serviceCardButton = tabTitleElement.querySelector(
+          ".e-n-tab-title-text .service-card .tab-button"
+        );
+        let scrollDisabled = tabTitleElement
+          .querySelector(".e-n-tab-title-text .service-card")
+          .classList.contains("scroll-disabled");
+        console.log(scrollDisabled);
+        allReadMoreBtns.forEach((otherButton) => {
+          otherButton.innerText = "Read More →";
+        });
+        serviceCardButton.innerText = "";
+        if (!scrollDisabled) {
+          const clickedId = serviceCardButton.id;
+          const baseUrl = "/franchisor-services/";
+          let newUrl = baseUrl + `#${clickedId}`;
+          if (window.location.hash) {
+            const urlParts = window.location.href.split("#");
+            newUrl = urlParts[0] + `#${clickedId}`;
+          }
+          window.location.href = newUrl;
+        }
+      });
+    });
+    if (allTabTitleElements.length > 0) {
+      allTabTitleElements[0].querySelector(
+        ".e-n-tab-title-text .service-card .tab-button"
+      ).innerText = "";
+    }
+  }
+</script>

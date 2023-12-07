@@ -1,0 +1,582 @@
+<!-- The Html CSS and JavaScript code are embedded within an HTML widget on the
+Franchisor Services Page -->
+<style>
+  :root {
+    --tick-icon-clr: #59d14f;
+    --cross-icon-clr: red;
+  }
+  /* Elementor Fix */
+  table td,
+  table th {
+    padding: 0 !important;
+    line-height: 1;
+    vertical-align: middle;
+    border: none;
+  }
+  table tbody > tr:nth-child(odd) > td,
+  table tbody > tr:nth-child(odd) > th {
+    background-color: transparent;
+  }
+  table td {
+    padding: 0 16px !important;
+  }
+  /* Elementor Fix */
+  table {
+    min-width: 767px;
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: separate;
+    border-spacing: 16px 0;
+    font-size: 16px;
+  }
+  td,
+  th {
+    text-align: center;
+  }
+  th {
+    font-weight: bold;
+    text-align: center;
+  }
+  td {
+    padding: 0 16px !important;
+  }
+  th:first-child,
+  td:first-child {
+    max-width: 448px;
+    width: 448px;
+  }
+  @media (max-width: 767px) {
+    th:first-child,
+    td:first-child {
+      max-width: 300px;
+      width: 300px;
+    }
+  }
+  th:not(:first-child),
+  td:not(:first-child) {
+    max-width: 196px;
+    width: 196px;
+  }
+  tr:hover td:not(:first-child) {
+    background-color: transparent;
+  }
+  .text-align-left {
+    text-align: left;
+  }
+  td {
+    padding: 0 16px;
+  }
+  .bg-black {
+    background-color: #0b0b0b;
+    color: white;
+    position: relative;
+  }
+  .service-clip-path {
+    padding: 12px;
+    background-color: #0b0b0b;
+    display: block;
+  }
+  @media (max-width: 1023px) {
+    .service-clip-path {
+      padding: 21px;
+    }
+  }
+  .startup-clip-path {
+    padding: 12px;
+    background-color: #125a5e;
+    display: block;
+  }
+  .emerging-clip-path {
+    padding: 12px;
+    background-color: #3b8d91;
+    display: block;
+  }
+  .inHouse-clip-path {
+    padding: 12px;
+    background-color: #5cb9be;
+    display: block;
+  }
+  .service-clip-path::after {
+    content: "";
+    position: absolute;
+    top: 97% !important;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    clip-path: polygon(0 0, 50% 50%, 100% 0);
+    background-color: #0b0b0b;
+  }
+  @media (max-width: 767px) {
+    .service-clip-path::after {
+      top: 99% !important;
+    }
+  }
+  .startup-clip-path::after {
+    content: "";
+    position: absolute;
+    top: 100% !important;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    clip-path: polygon(0 0, 50% 40%, 100% 0);
+    background-color: #125a5e;
+  }
+  .emerging-clip-path::after {
+    content: "";
+    position: absolute;
+    top: 100% !important;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    clip-path: polygon(0 0, 50% 40%, 100% 0);
+    background-color: #3b8d91;
+  }
+  .inHouse-clip-path::after {
+    content: "";
+    position: absolute;
+    top: 100% !important;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    clip-path: polygon(0 0, 50% 40%, 100% 0);
+    background-color: #5cb9be;
+  }
+  @media (max-width: 767px) {
+    .startup-clip-path::after,
+    .emerging-clip-path::after,
+    .inHouse-clip-path::after {
+      top: 99% !important;
+    }
+  }
+  .bg-offWhite {
+    background-color: #f9f9f9 !important;
+  }
+  .bg-blue-stone {
+    position: relative;
+    background-color: #125a5e;
+    color: white;
+  }
+  .bg-blue-chill {
+    position: relative;
+    background-color: #3b8d91;
+    color: white;
+  }
+  .bg-fountain-blue {
+    position: relative;
+    background-color: #5cb9be;
+    color: white;
+  }
+  .svg-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .padding-block {
+    display: block;
+    padding: 16px 0 !important;
+  }
+  .border-bottom {
+    border-bottom: 1px solid #bcbcbc;
+  }
+  .border-right-left-blue-stone {
+    border-right: 2px solid #125a5e;
+    border-left: 2px solid #125a5e;
+  }
+  .border-right-left-blue-chill {
+    border-right: 2px solid #3b8d91;
+    border-left: 2px solid #3b8d91;
+  }
+  .border-right-left-fountain-blue {
+    border-right: 2px solid #5cb9be;
+    border-left: 2px solid #5cb9be;
+  }
+</style>
+<table>
+  <tr>
+    <th class="bg-black">
+      <span class="service-clip-path">Service</span>
+    </th>
+    <th
+      class="bg-blue-stone border-right-left-blue-stone"
+      style="border-top: 2px solid #125a5e"
+    >
+      <span class="startup-clip-path">Startup Package</span>
+    </th>
+    <th
+      class="bg-blue-chill border-right-left-blue-chill"
+      style="border-top: 2px solid #3b8d91"
+    >
+      <span class="emerging-clip-path">Emerging Package</span>
+    </th>
+    <th
+      class="bg-fountain-blue border-right-left-fountain-blue"
+      style="border-top: 2px solid #5cb9be"
+    >
+      <span class="inHouse-clip-path">In-House Packeage</span>
+    </th>
+  </tr>
+
+  <tr>
+    <td
+      class="bg-offWhite text-align-left"
+      style="padding-top: 20px !important"
+    >
+      <span class="border-bottom padding-block">Annual FDD Updates</span>
+    </td>
+    <td
+      class="check-icon border-right-left-blue-stone"
+      style="padding-top: 20px !important"
+    ></td>
+    <td
+      class="check-icon border-right-left-blue-chill"
+      style="padding-top: 20px !important"
+    ></td>
+    <td
+      class="check-icon border-right-left-fountain-blue"
+      style="padding-top: 20px !important"
+    ></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block">Midyear FDD Updates</span>
+    </td>
+    <td class="check-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Notice Filing State Registrations</span
+      >
+    </td>
+    <td class="check-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Registration State Filings and Comment Letter Responses</span
+      >
+    </td>
+    <td class="check-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >State Registration Renewal</span
+      >
+    </td>
+    <td class="check-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Filing State Required Marketing Materials</span
+      >
+    </td>
+    <td class="check-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Regular Email with Clients</span
+      >
+    </td>
+    <td class="check-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Periodic Conferences to Discuss System</span
+      >
+    </td>
+    <td class="check-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Annual Franchise Law Updates and Update Letter</span
+      >
+    </td>
+    <td class="check-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Tracking State Registration Deadlines</span
+      >
+    </td>
+    <td class="check-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Training Franchisor Sales Staff and New Hires</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Reviewing Marketing Materials and Franchisor Website for Compliance
+        Purposes</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Amending the FDD for Material Changes or as Needed</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Drafting Franchise Closing Documents for Deals</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Providing Quarterly Sales Reports to Required States</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Issuing Franchise Closing Documents for Deals</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Monthly Conference Via Zoom to Discus System Updates, Questions,
+        Concerns and Future Business Plans</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Negotiating Franchise Agreements and Transactions with Franchisee
+        Counsel</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Routine Communication with Lead Attorney</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="check-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block">Weekly Zoom Conferences</span>
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="cross-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Monitoring a legal@(insertbrand).com Email Account by our
+        Attorneys</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="cross-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Quarterly Visit to HQ (costs Paid by client)</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="cross-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >File Trademark Applications and Monitor Trademarks</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="cross-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Drafting and Negotiating Agreements</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="cross-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block"
+        >Such as vendor agreements Used in System</span
+      >
+    </td>
+    <td class="cross-icon border-right-left-blue-stone"></td>
+    <td class="cross-icon border-right-left-blue-chill"></td>
+    <td class="check-icon border-right-left-fountain-blue"></td>
+  </tr>
+
+  <tr>
+    <td class="bg-offWhite text-align-left">
+      <span class="border-bottom padding-block" style="margin-bottom: 30px"
+        >Unlimited Communications with Lead TFF Attorney</span
+      >
+    </td>
+    <td
+      class="border-right-left-blue-stone"
+      style="border-bottom: 2px solid #125a5e; padding-top: 5px !important"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="svg-icon"
+        viewBox="0 0 30 30"
+        style="margin-bottom: 30px"
+      >
+        <path
+          d="M17,2A15,15,0,1,0,32,17,15.044,15.044,0,0,0,17,2Zm5.55,18.45a1.485,1.485,0,0,1-2.1,2.1L17,19.1l-3.45,3.45a1.485,1.485,0,0,1-2.1-2.1L14.9,17l-3.45-3.45a1.485,1.485,0,0,1,2.1-2.1L17,14.9l3.45-3.45a1.485,1.485,0,0,1,2.1,2.1L19.1,17Z"
+          transform="translate(-2 -2)"
+          fill="var(--cross-icon-clr)"
+        />
+      </svg>
+    </td>
+    <td
+      class="border-right-left-blue-chill"
+      style="border-bottom: 2px solid #3b8d91; padding-top: 5px !important"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="svg-icon"
+        viewBox="0 0 30 30"
+        style="margin-bottom: 30px"
+      >
+        <path
+          d="M17,2A15,15,0,1,0,32,17,15.044,15.044,0,0,0,17,2Zm5.55,18.45a1.485,1.485,0,0,1-2.1,2.1L17,19.1l-3.45,3.45a1.485,1.485,0,0,1-2.1-2.1L14.9,17l-3.45-3.45a1.485,1.485,0,0,1,2.1-2.1L17,14.9l3.45-3.45a1.485,1.485,0,0,1,2.1,2.1L19.1,17Z"
+          transform="translate(-2 -2)"
+          fill="var(--cross-icon-clr)"
+        />
+      </svg>
+    </td>
+    <td
+      class="border-right-left-fountain-blue"
+      style="border-bottom: 2px solid #5cb9be; padding-top: 5px !important"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="svg-icon"
+        viewBox="0 0 30 30"
+        style="margin-bottom: 30px"
+      >
+        <path
+          d="M17,32A15,15,0,1,0,2,17,15,15,0,0,0,17,32Zm5.3-20.3a1.5,1.5,0,0,1,2.121,2.124L15.946,22.3l-.006.006a1.5,1.5,0,0,1-2.121,0l-.006-.006L9.575,18.062A1.5,1.5,0,1,1,11.7,15.941l3.183,3.182L22.3,11.7Z"
+          transform="translate(-2 -2)"
+          fill="var(--tick-icon-clr)"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </td>
+  </tr>
+</table>
+<script>
+  let tdCheckElements = document.querySelectorAll(".check-icon");
+  let tdCrossElements = document.querySelectorAll(".cross-icon");
+  let checkSvgContent = `
+        <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 30 30">
+          <path d="M17,32A15,15,0,1,0,2,17,15,15,0,0,0,17,32Zm5.3-20.3a1.5,1.5,0,0,1,2.121,2.124L15.946,22.3l-.006.006a1.5,1.5,0,0,1-2.121,0l-.006-.006L9.575,18.062A1.5,1.5,0,1,1,11.7,15.941l3.183,3.182L22.3,11.7Z" transform="translate(-2 -2)" fill="var(--tick-icon-clr)" fill-rule="evenodd" />
+        </svg>
+      `;
+  let crossSvgContent = `
+        <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" viewBox="0 0 30 30">
+          <path id="ex-icon" d="M17,2A15,15,0,1,0,32,17,15.044,15.044,0,0,0,17,2Zm5.55,18.45a1.485,1.485,0,0,1-2.1,2.1L17,19.1l-3.45,3.45a1.485,1.485,0,0,1-2.1-2.1L14.9,17l-3.45-3.45a1.485,1.485,0,0,1,2.1-2.1L17,14.9l3.45-3.45a1.485,1.485,0,0,1,2.1,2.1L19.1,17Z" transform="translate(-2 -2)" fill="var(--cross-icon-clr)" />
+        </svg>
+      `;
+  tdCheckElements.forEach(function (td) {
+    td.innerHTML = checkSvgContent;
+  });
+  tdCrossElements.forEach(function (td) {
+    td.innerHTML = crossSvgContent;
+  });
+</script>
